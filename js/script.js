@@ -95,6 +95,7 @@ $(function () {
                 break;
             case 'md-drop':
             case 'etc':
+            case 'common':
                 pct = Math.floor(itemPct * 10000) * pct / 100;
                 break;
             case 'md-limit':
@@ -107,9 +108,6 @@ $(function () {
                 } else {
                     pct = 0;
                 }
-                break;
-            case 'common':
-                pct = itemPct * pct / 100;
                 break;
         }
         console.log(pct, randRange);
