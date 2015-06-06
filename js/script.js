@@ -115,7 +115,7 @@ $(function () {
     };
     var doCalc = function (form) {
         var pct = makeChance(form);
-        $('#result-pct').text(Math.round(pct*10000)/100+'%');
+        $('#result-pct').text(Math.round(pct*1000000)/10000+'%');
         $('#result-kills').text(1/pct);
     };
     $('form.drop').submit(function () {
