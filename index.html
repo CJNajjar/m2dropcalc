@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Metin2 Drop Chance Calculator</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/custom.css">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><i class="fa fa-diamond"></i> M2 Drop Chance Calc</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#calc">Calc</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+        <div class="jumbotron">
+            <div class="container">
+                <h1><i class="fa fa-diamond"></i> Metin2 Drop Chance Calculator</h1>
+                <p>
+                    <b>Hey!</b>
+                    This small project is a drop chance calculator for the various drop formats of metin2 since the calculation itself isn't as straight forward as the format would suggest. <br/> All the values are pulled from the leaked source and should also be correct for older versions.
+                </p>
+            </div>
+        </div>
+
+        <div class="container" id="calc">
+            <div class="page-header">
+                <h2>Calculator</h2>
+            </div>
+            <div style="float: left; padding: 8px;" class="col-md-6">
+                <form class="form-horizontal drop">
+                    <div class="form-group">
+                        <label class="col-md-5 control-label" for="pct">Drop PCT</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" name="pct" placeholder="drop percentage" id="pct">
+                        </div>
+                    </div>
+                    <div class="form-group types type-md-kill">
+                        <label class="col-md-5 control-label" for="pct_sum">Group PCT Sum</label>
+                        <div class="col-md-7" data-toggle="tooltip" data-placement="top" title="Sum of all group percentages">
+                            <input type="text" class="form-control" name="pct_sum" id="pct_sum" value="1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-5 control-label" for="type">Drop Type</label>
+                        <div class="col-md-7">
+                            <select name="type" id="type" class="form-control">
+                                <option value="md-kill">Mob Drop Item - Kill</option>
+                                <option value="md-drop">Mob Drop Item - Drop</option>
+                                <option value="md-limit">Mob Drop Item - Limit</option>
+                                <option value="md-gloves">Mob Drop Item - Thiefgloves</option>
+                                <option value="etc">ETC Drop Item</option>
+                                <option value="common">Common Drop Item</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group types type-md-kill">
+                        <label class="col-md-5 control-label" for="kill_drop">kill_drop</label>
+                        <div class="col-md-7" data-toggle="tooltip" data-placement="top" title="kill_drop property of the drop group. Roughly: How many kills for a drop to happen">
+                            <input type="text" class="form-control" name="kill_drop" id="kill_drop" value="1">
+                        </div>
+                    </div>
+                    <div class="form-group nonlimit">
+                        <label class="col-md-5 control-label" for="delta">Level Difference</label>
+                        <div class="col-md-7">
+                            <select name="delta" id="delta" class="form-control" data-toggle="tooltip" data-placement="top" title="Character level relative to the mob, mob_level-char_level (e.g. char 30, mob 20 is -10)">
+                                <option value="0">≤ -15</option>
+                                <option value="1">-14</option>
+                                <option value="2">-13</option>
+                                <option value="3">-12</option>
+                                <option value="4">-11</option>
+                                <option value="5">-10</option>
+                                <option value="6">-9</option>
+                                <option value="7">-8</option>
+                                <option value="8">-7</option>
+                                <option value="9">-6</option>
+                                <option value="10">-5</option>
+                                <option value="11">-4</option>
+                                <option value="12">-3</option>
+                                <option value="13">-2</option>
+                                <option value="14">-1</option>
+                                <option value="15" selected="selected">0</option>
+                                <option value="16">+1</option>
+                                <option value="17">+2</option>
+                                <option value="18">+3</option>
+                                <option value="19">+4</option>
+                                <option value="20">+5</option>
+                                <option value="21">+6</option>
+                                <option value="22">+7</option>
+                                <option value="23">+8</option>
+                                <option value="24">+9</option>
+                                <option value="25">+10</option>
+                                <option value="26">+11</option>
+                                <option value="27">+12</option>
+                                <option value="28">+13</option>
+                                <option value="29">+14</option>
+                                <option value="30">≥ +15</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group nonlimit">
+                        <label class="col-md-5 control-label" for="delta-boss">Is Boss?</label>
+                        <div class="col-md-7"  data-toggle="tooltip" data-placement="top" title="This influences level difference chances. Mob Rank == 5, not for metin stones">
+                            <input type="checkbox" name="delta-boss" id="delta-boss" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group nonlimit">
+                        <label class="col-md-5 control-label" for="priv">Priv Drop Rates</label>
+                        <div class="col-md-7" data-toggle="tooltip" data-placement="top" title="Global /priv_empire drop rate increase - in %">
+                            <input type="text" class="form-control" name="priv" id="priv" placeholder="in %" value="0%">
+                        </div>
+                    </div>
+                    <div class="form-group nonlimit">
+                        <label class="col-md-5 control-label" for="premium"><a href="#note-premium">Premium Drop?</a></label>
+                        <div class="col-md-7">
+                            <input type="checkbox" name="premium" id="premium" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group nonlimit">
+                        <label class="col-md-5 control-label" for="double"><a href="#note-double">Double Item?</a></label>
+                        <div class="col-md-7">
+                            <input type="checkbox" name="double" id="double" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group nonlimit">
+                        <label class="col-md-5 control-label" for="mob_item_buyer">mob_item_buyer Eventflag</label>
+                        <div class="col-md-7" data-toggle="tooltip" data-placement="top" title="Influences global drop rate for people having the premium effect. 100 when not set.">
+                            <input type="text" class="form-control" name="mob_item_buyer" id="mob_item_buyer" value="100">
+                        </div>
+                    </div>
+                    <div class="form-group nonlimit">
+                        <label class="col-md-5 control-label" for="mob_item">mob_item Eventflag</label>
+                        <div class="col-md-7" data-toggle="tooltip" data-placement="top" title="Influences global drop rate for people not having the premium effect. 100 when not set.">
+                            <input type="text" class="form-control" name="mob_item" id="mob_item" placeholder="" value="100">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div style="float: left; padding: 8px; padding-top: 20px;"  class="col-md-6">
+                The item has a chance of <b id="result-pct">NaN%</b> to drop. <br/>
+                It will drop - on average - every <b id="result-kills">NaN</b> mob kills.
+            </div>
+        </div>
+        <div class="container" id="notes">
+            <div class="page-header">
+                <h2>Notes</h2>
+            </div>
+            <div class="panel panel-default" id="note-premium">
+                <div class="panel-heading"><h4>Premium Drop <small style="font-size:50%"><a href="#note-premium"><i class="fa fa-link"></i></a></small></h4></div>
+                <div class="panel-body">
+                    <p>
+                        The premium drop is one of the itemshop bonuses on the official servers. It is either set via the account table, the same affect set by a usable item or when an item of UNIQUE_GROUP_DOUBLE_ITEM is equipped.<br/>
+                        The exact items may vary for you, they are all items in the special_item_group with vnum 10002.
+                    </p>
+                </div>
+            </div>
+            <div class="panel panel-default" id="note-double">
+                <div class="panel-heading"><h4>Double Item <small style="font-size:50%"><a href="#note-double"><i class="fa fa-link"></i></a></small></h4></div>
+                <div class="panel-body">
+                    <p>
+                        The double drop item is set when an item of UNIQUE_GROUP_DOUBLE_ITEM is equipped.<br/>
+                        The exact items may vary for you, they are all items in the special_item_group with vnum 10002.
+                    </p>
+                </div>
+            </div>
+            <div class="panel panel-default" id="jackpot">
+                <div class="panel-heading"><h4>"Jackpot"-Chance <small style="font-size:50%"><a href="#jackpot"><i class="fa fa-link"></i></a></small></h4></div>
+                <div class="panel-body">
+                    <p>
+                        There is a 0.002% chance for an additional 1000% increase in drop chance and a 0.01% chance for an additional 500% increase. I have ignored them in this calculation.<br/>
+                        The chance will get triggered - on average - every 50.000 or 10.000 (respectively) mob kills, highly unlikely.
+                    </p>
+                </div>
+            </div>
+            <div class="panel panel-default" id="notes-comments">
+                <div class="panel-heading"><h4>Misc. Comments <small style="font-size:50%"><a href="#notes-comments"><i class="fa fa-link"></i></a></small></h4></div>
+                <div class="panel-body">
+                    <p>
+                        Yes, the mob drop limit type disregards everything in terms of bonuses and such. It does not give a shit.<br/>
+                        The mob drop item kill type will only drop one item, if it drops one. All other types go over every possible item<br/>
+                        The common drop item format is retarded.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <p class="text-muted">
+                    Metin2 Drop Chance Calculator &copy; 2015 <a href="http://imer.cc"> iMer</a>. Licensed under <a href="http://opensource.org/licenses/mit-license.html"> MIT License</a>
+                    <br/>
+                    <br/>
+                    <a href="http://github.com/imermcmaps/M2DropCalc">Github Project</a>
+                </p>
+            </div>
+        </div>
+        <!-- scripts -->
+        <script src="js/jquery-2.1.3.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
